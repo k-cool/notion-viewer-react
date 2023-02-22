@@ -1,33 +1,27 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css, SerializedStyles } from '@emotion/react';
-import { HeadingType, IBlockObj } from 'types/block.type';
+import { HeadingContent, HeadingType, IBlockObj } from 'types/block.type';
 import { createMarkup } from 'util/DOMFunc';
 
 interface HeaderProps {
-	blockData: IBlockObj;
+	blockData: IBlockObj<HeadingContent>;
 }
 
 export default function Header({ blockData }: HeaderProps) {
+	const { type, innerHTML } = blockData;
+
 	const titleTagStyle = [commonCss, headingCss[blockData.type as HeadingType]];
 
-	switch (blockData.type) {
+	switch (type) {
 		case 'heading_1':
-			return (
-				<h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h1>
-			);
+			return <h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(innerHTML)}></h1>;
 		case 'heading_2':
-			return (
-				<h2 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h2>
-			);
+			return <h2 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(innerHTML)}></h2>;
 		case 'heading_3':
-			return (
-				<h3 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h3>
-			);
+			return <h3 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(innerHTML)}></h3>;
 		default:
-			return (
-				<h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h1>
-			);
+			return <h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(innerHTML)}></h1>;
 	}
 }
 
