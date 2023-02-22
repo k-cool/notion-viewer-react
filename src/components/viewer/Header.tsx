@@ -1,8 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react';
-import { gray, purple } from 'styles/palette';
-import { IBlockObj } from 'types/block.type';
+import { jsx, css, SerializedStyles } from '@emotion/react';
+import { HeadingType, IBlockObj } from 'types/block.type';
 import { createMarkup } from 'util/DOMFunc';
 
 interface HeaderProps {
@@ -10,30 +9,47 @@ interface HeaderProps {
 }
 
 export default function Header({ blockData }: HeaderProps) {
-	console.log(blockData);
-	return (
-		<div css={HeaderCss}>
-			<h1 dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h1>
-		</div>
-	);
+	const titleTagStyle = [commonCss, headingCss[blockData.type as HeadingType]];
+
+	switch (blockData.type) {
+		case 'heading_1':
+			return (
+				<h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h1>
+			);
+		case 'heading_2':
+			return (
+				<h2 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h2>
+			);
+		case 'heading_3':
+			return (
+				<h3 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h3>
+			);
+		default:
+			return (
+				<h1 css={titleTagStyle} dangerouslySetInnerHTML={createMarkup(blockData.innerHTML)}></h1>
+			);
+	}
 }
 
-const HeaderCss = css`
-	em,
-	b,
-	strong {
-		font-weight: bold;
-	}
-
-	i {
-		font-style: italic;
-		padding-right: 2px;
-	}
-
-	code {
-		background-color: ${gray[200]};
-		color: ${purple[40]};
-		padding: 3px 6px 2px 6px;
-		border-radius: 4px;
-	}
+const commonCss = css`
+	width: 100%;
+	margin: 8px 0;
+	padding: 0 10px;
+	font-weight: bold;
 `;
+
+type IHeadingCss = {
+	[T in HeadingType]: SerializedStyles;
+};
+
+const headingCss: IHeadingCss = {
+	heading_1: css`
+		font-size: 32px;
+	`,
+	heading_2: css`
+		font-size: 24px;
+	`,
+	heading_3: css`
+		font-size: 18px;
+	`,
+};

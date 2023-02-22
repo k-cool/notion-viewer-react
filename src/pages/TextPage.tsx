@@ -16,7 +16,7 @@ export default function TestPage({}: TestPageProps) {
 	console.log(mappable);
 	return (
 		<div css={TestPageCss}>
-			test
+			<div>header</div>
 			<Header blockData={mappable[0]} />
 			<Header blockData={mappable[1]} />
 			<Header blockData={mappable[2]} />

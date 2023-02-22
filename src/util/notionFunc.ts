@@ -7,6 +7,7 @@ import { IBlockObj } from 'types/block.type';
 
 export function parseResults(results: Array<BlockObjectResponse>): IBlockObj[] {
 	const parsed: IBlockObj[] = [];
+
 	results.forEach((block, i) => {
 		const blockObj: IBlockObj = { id: '', type: '', content: {} };
 
