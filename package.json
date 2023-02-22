@@ -5,16 +5,18 @@
 	"repository": "https://github.com/k-cool/notion-viewer-react.git",
 	"author": "siwon <ksw3721@gmail.com>",
 	"license": "MIT",
-  "scripts": {
+	"scripts": {
 		"dev": "webpack serve --mode development"
 	},
 	"dependencies": {
 		"@emotion/core": "^11.0.0",
 		"@emotion/react": "^11.10.6",
+		"@notionhq/client": "^2.2.3",
 		"dompurify": "^3.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.8.1"
+		"react-router-dom": "^6.8.1",
+		"uuid": "^9.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.12",
@@ -26,6 +28,7 @@
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
 		"@types/react-router-dom": "^5.3.3",
+		"@types/uuid": "^9.0.1",
 		"@typescript-eslint/eslint-plugin": "^5.52.0",
 		"@typescript-eslint/parser": "^5.52.0",
 		"babel-loader": "^9.1.2",

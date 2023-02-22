@@ -1,0 +1,88 @@
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+
+export const RICH_TEXT: Array<RichTextItemResponse> = [
+	{
+		type: 'text',
+		text: { content: '제목 ', link: null },
+		annotations: {
+			bold: true,
+			italic: false,
+			strikethrough: false,
+			underline: true,
+			code: false,
+			color: 'default',
+		},
+		plain_text: '제목 ',
+		href: null,
+	},
+	{
+		type: 'text',
+		text: { content: '1', link: null },
+		annotations: {
+			bold: true,
+			italic: false,
+			strikethrough: false,
+			underline: false,
+			code: false,
+			color: 'default',
+		},
+		plain_text: '1',
+		href: null,
+	},
+	{
+		type: 'text',
+		text: { content: ' ', link: null },
+		annotations: {
+			bold: false,
+			italic: false,
+			strikethrough: false,
+			underline: false,
+			code: false,
+			color: 'default',
+		},
+		plain_text: ' ',
+		href: null,
+	},
+	{
+		type: 'text',
+		text: { content: '테', link: null },
+		annotations: {
+			bold: false,
+			italic: false,
+			strikethrough: false,
+			underline: false,
+			code: false,
+			color: 'orange',
+		},
+		plain_text: '테',
+		href: null,
+	},
+	{
+		type: 'text',
+		text: { content: '스', link: null },
+		annotations: {
+			bold: false,
+			italic: true,
+			strikethrough: false,
+			underline: false,
+			code: false,
+			color: 'default',
+		},
+		plain_text: '스',
+		href: null,
+	},
+	{
+		type: 'text',
+		text: { content: '트', link: null },
+		annotations: {
+			bold: false,
+			italic: false,
+			strikethrough: false,
+			underline: false,
+			code: false,
+			color: 'default',
+		},
+		plain_text: '트',
+		href: null,
+	},
+];
