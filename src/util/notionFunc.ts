@@ -3,7 +3,7 @@ import {
 	BlockObjectResponse,
 	RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import { IBlockObj, ImageContent } from 'types/block.type';
+import { IBlockObj, ImageContent, ParagraphContent } from 'types/block.type';
 
 export function parseResults(results: Array<BlockObjectResponse>): IBlockObj[] {
 	const parsed: IBlockObj[] = [];
@@ -16,7 +16,15 @@ export function parseResults(results: Array<BlockObjectResponse>): IBlockObj[] {
 			if (key === 'id') blockObj.id = value;
 
 			if (key === block.type) {
-				if (key === 'image') {
+				if (
+					key === 'paragraph' ||
+					key === 'heading_1' ||
+					key === 'heading_2' ||
+					key === 'heading_3'
+				) {
+					const content: ParagraphContent = { innerHTML: parseRichText(value.rich_text) };
+					blockObj.content = content;
+				} else if (key === 'image') {
 					const imageContent: ImageContent = {
 						type: value.type,
 						url: value.file ? value.file.url : value.external.url,
@@ -28,8 +36,6 @@ export function parseResults(results: Array<BlockObjectResponse>): IBlockObj[] {
 				}
 			}
 		}
-
-		if (blockObj.content.rich_text) blockObj.innerHTML = parseRichText(blockObj.content.rich_text);
 
 		parsed[i] = blockObj;
 	});

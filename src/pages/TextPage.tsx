@@ -4,6 +4,7 @@ import { jsx, css } from '@emotion/react';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import Header from 'components/viewer/Header';
 import Image from 'components/viewer/Image';
+import Paragraph from 'components/viewer/Paragraph';
 import { RESULTS } from 'data/results';
 import { RICH_TEXT } from 'data/rich_text';
 import { IBlockObj } from 'types/block.type';
@@ -25,6 +26,9 @@ export default function TestPage({}: TestPageProps) {
 
 			<div>image</div>
 			<Image blockData={mappable[3]} />
+			<div>paragraph</div>
+			<Paragraph blockData={mappable[4]} />
+			<Paragraph blockData={mappable[5]} />
 		</div>
 	);
 }

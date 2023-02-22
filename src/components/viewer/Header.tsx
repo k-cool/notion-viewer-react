@@ -9,7 +9,10 @@ interface HeaderProps {
 }
 
 export default function Header({ blockData }: HeaderProps) {
-	const { type, innerHTML } = blockData;
+	const {
+		type,
+		content: { innerHTML },
+	} = blockData;
 
 	const titleTagStyle = [commonCss, headingCss[blockData.type as HeadingType]];
 

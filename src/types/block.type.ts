@@ -8,12 +8,10 @@ export interface IBlockObj<T = any> {
 	id: string;
 	type: string;
 	content: T;
-	innerHTML?: any;
 }
 
 export type HeadingContent = {
-	rich_text: Array<RichTextItemResponse>;
-	color: string;
+	innerHTML: string;
 };
 
 export type ImageContent = {
@@ -21,19 +19,9 @@ export type ImageContent = {
 	url: string;
 	caption: string;
 };
-// export type ImageContent =
-// 	| {
-// 			type: 'external';
-// 			external: {
-// 				url: string;
-// 			};
-// 			caption: Array<RichTextItemResponse>;
-// 	  }
-// 	| {
-// 			type: 'file';
-// 			file: {
-// 				url: string;
-// 				expiry_time: string;
-// 			};
-// 			caption: Array<RichTextItemResponse>;
-// 	  };
+
+export type ParagraphContent = {
+	innerHTML: string;
+};
+
+export type CodeContent = {};

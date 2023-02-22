@@ -16,7 +16,7 @@ export default css`
 	code {
 		background-color: ${gray[200]};
 		color: ${purple[40]};
-		padding: 3px 6px 2px 6px;
+		padding: 3px 6px 1px 6px;
 		border-radius: 4px;
 	}
 `;
